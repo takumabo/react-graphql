@@ -8,13 +8,14 @@ const mongoose = require('mongoose')
 
 // set up connect database config
 dotenv.config()
-const dbUser = process.env.MONGO_DB_USER
-const dbPassword = process.env.MONGO_DB_PASSWORD
+const DB_USER = process.env.MONGO_DB_USER
+const DB_PASSWORD = process.env.MONGO_DB_PASSWORD
+const DB_NAME = process.env.MONGO_DB_NAME
 
 const app = express()
 mongoose.set('strictQuery', false)
-const connectionKey = `${dbUser}:${dbPassword}`
-mongoose.connect(`mongodb+srv://${connectionKey}@cluster0.ippugzt.mongodb.net/?retryWrites=true&w=majority`)
+const connectionKey = `${DB_USER}:${DB_PASSWORD}`
+mongoose.connect(`mongodb+srv://${connectionKey}@cluster0.ippugzt.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
 mongoose.connection.once('open', () => {
     console.log("vonnection")
 })
