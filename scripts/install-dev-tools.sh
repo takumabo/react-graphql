@@ -1,8 +1,7 @@
 echo 'nodejs' $(node --version)
 echo 'typescript' $(tsc --version)
 
-npm i nodemon -g
-npm i ts-node -g
+npm i -g nodemon ts-node lodash
 
 echo 'nodemon' $(nodemon -v)
 echo 'ts-node' $(ts-node -v)

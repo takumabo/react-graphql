@@ -1,9 +1,8 @@
 
-// need to write express as node.js. not import  
+// need to write 'require' as node.js. not 'import'  
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 
-// const graphqlHTTP = expressGraphql()
 const app = express()
 
 app.use('/graphql', graphqlHTTP({
