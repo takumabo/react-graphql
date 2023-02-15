@@ -1,11 +1,23 @@
 
 // need to write 'require' as node.js. not 'import'  
+const dotenv = require('dotenv')
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema/schema')
+const mongoose = require('mongoose')
+
+// set up connect database config
+dotenv.config()
+const dbUser = process.env.MONGO_DB_USER
+const dbPassword = process.env.MONGO_DB_PASSWORD
 
 const app = express()
-
+mongoose.set('strictQuery', false)
+const connectionKey = `${dbUser}:${dbPassword}`
+mongoose.connect(`mongodb+srv://${connectionKey}@cluster0.ippugzt.mongodb.net/?retryWrites=true&w=majority`)
+mongoose.connection.once('open', () => {
+    console.log("vonnection")
+})
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
