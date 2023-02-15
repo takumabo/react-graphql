@@ -15,8 +15,9 @@ services:
       - app
     volumes:
       - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
+      - ~/.ssh:/root/.ssh #sshキー
+      - ~/.gitconfig:/root/.gitconfig #gitの設定
       - ../:/workspace:cached
-      # - ../:/var/www
   
   app:
     build:
