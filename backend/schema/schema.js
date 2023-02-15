@@ -5,9 +5,9 @@ const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt }
 
 // dummry data
 const books = [
-    { name: 'taro', genre: 'man', id: '1' },
-    { name: 'hanako', genre: 'woman', id: '2' },
-    { name: 'jiro', genre: 'man', id: '3' },
+    { name: 'taro', genre: 'man', id: '1', authorId: '3' },
+    { name: 'hanako', genre: 'woman', id: '2', authorId: '2' },
+    { name: 'jiro', genre: 'man', id: '3', authorId: '1' },
 ]
 
 const authors = [
@@ -21,7 +21,13 @@ const BookType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
-        genre: { type: GraphQLString }
+        genre: { type: GraphQLString },
+        author: {
+            type: AuthorType,
+            resolve(parent, args) {
+                return lodashModules.find(authors, { id: parent.authorId })
+            }
+        }
     })
 })
 
