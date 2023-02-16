@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 
-export function BookList() {
+export default function BookList() {
     return (
         <Box>book name</Box>
     )
