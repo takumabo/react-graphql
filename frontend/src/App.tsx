@@ -1,5 +1,7 @@
 import './App.css';
+import Divider from '@mui/material/Divider';
 import BookList from './components/BookList';
+import AddBook from './components/AddBook';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
@@ -7,16 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 const uri = process.env.REACT_APP_BACKEND_ENDPOINT
 
 // setup apollo client
-const httpLink = createHttpLink({
-  uri,
-  // headers: {
-  //   'Content-Type': 'application/json',
-  //   'Access-Control-Allow-Origin': '*',
-  // },
-  // fetchOptions: {
-  //   mode: 'no-cors'
-  // }
-})
+const httpLink = createHttpLink({ uri })
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('token')
   return {
@@ -34,6 +27,8 @@ const apollo = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={apollo}>
+      <AddBook />
+      <Divider sx={{ border: '1px solid red' }} />
       <BookList />
     </ApolloProvider>
   );

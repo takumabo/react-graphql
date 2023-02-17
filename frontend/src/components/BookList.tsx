@@ -1,31 +1,21 @@
 import Box from "@mui/material/Box";
-import { gql, useQuery } from "@apollo/client";
-
-const GET_BOOKS = gql`
-  query GetBooks {
-    books {
-        name
-        id
-    }
-  }
-`;
-
-// const GET_AUTHORS = gql`
-//     query GetAuthors {
-//         authors {
-//             name
-//             age
-//         }
-//     }
-// `
+import { useQuery } from "@apollo/client";
+import { Book } from '../graphql/types'
+import { getBooksQuery } from '../graphql/queries'
 
 export default function BookList() {
-    const { loading, error, data } = useQuery(GET_BOOKS)
-    if (loading) return (<Box>loading</Box>);
-    if (error) return <Box>Error : {error.message}</Box>;
-
-    console.log({ data })
-    return (
-        <Box>book name</Box>
-    )
+  const { loading, error, data } = useQuery(getBooksQuery)
+  if (loading) return (<Box>loading</Box>);
+  if (error) return <Box>Error : {error.message}</Box>;
+  const books: Book[] = data.books
+  if (books.length < 1) return <Box>not any data </Box>;
+  return (
+    <>
+      {
+        books.map(book => (
+          <Box key={book.id}>{book.name}</Box>
+        ))
+      }
+    </>
+  )
 }
