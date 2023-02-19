@@ -18,7 +18,6 @@ export default function BookDetail(props: BookDetailProps) {
     if (error) return <Box>Error : {error.message}</Box>;
     const book: Book = data.book
     if (!book) return <Box>not any data </Box>;
-    console.log(book)
     return (
         <Box sx={{ color: 'gray' }}>
             <Typography variant="body2">BOOK_NAME:{book.name}</Typography>

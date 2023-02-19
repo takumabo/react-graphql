@@ -36,21 +36,10 @@ export default function AddBook() {
      * execute Add Book
      */
     async function executeAddBook() {
-        console.log({
-            genre,
-            bookName,
-            authorId,
-        })
         const { data, errors } = await addBook()
-        console.log({
-            data,
-            errors
-        })
-        if (error) return
+        if (errors && 0 < errors.length) return
         const mutationResult = data.addBook
-        console.log(mutationResult)
-        // const [mutateFunction, { name: bookName, genre, authorId }] = useMutation(addBookMutation);
-        // console.log({ result })
+        console.log({ mutationResult })
     }
 
     const { loading, error, data } = useQuery(getAuthorsQuery)

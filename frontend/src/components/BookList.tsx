@@ -21,7 +21,6 @@ export default function BookList() {
    * shwo book detail
    */
   function showBookDetail(bookId?: string) {
-    console.log(bookId)
     if (!bookId) return
     setBookId(bookId)
   }
