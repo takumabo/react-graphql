@@ -20,6 +20,8 @@ this is react application with grapql server
 
 this application depends on some following modules.
 
+noted: you need set up ```nodemon app.ts``` at ```/backend``` and check ```Running on http://localhost:4000``` at server.
+
 ### nodemon
 
 this application use `nodemon` to set up backend.
@@ -39,6 +41,8 @@ https://www.digitalocean.com/community/tutorials/workflow-nodemon-jas
 
 # frontend
 this application depends on react with typescript
+
+noted: you need set up ```npm start``` at ```/frontend``` and check ```localhost:3000``` at browser.
 
 # other
 some modules use not latest because of resolving dependencies modules.
