@@ -23,7 +23,7 @@ mongoose.set('strictQuery', false)
 const connectionKey = `${DB_USER}:${DB_PASSWORD}`
 mongoose.connect(`mongodb+srv://${connectionKey}@cluster0.ippugzt.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
 mongoose.connection.once('open', () => {
-    console.log("vonnection")
+    console.log("connection")
 })
 app.use('/graphql',
     graphqlHTTP({
