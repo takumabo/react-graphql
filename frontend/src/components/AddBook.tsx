@@ -1,7 +1,7 @@
 
 import { useQuery, useMutation } from '@apollo/client'
 import { Author } from '../graphql/types'
-import { getAuthorsQuery, addBookMutation } from '../graphql/queries'
+import { getAuthorsQuery, getBooksQuery, addBookMutation } from '../graphql/queries'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -20,7 +20,8 @@ export default function AddBook() {
             name: bookName,
             genre,
             authorId
-        }
+        },
+        refetchQueries: [{ query: getBooksQuery }]
     })
     /**
      * select author
